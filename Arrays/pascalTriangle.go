@@ -1,26 +1,25 @@
 package main
+import (
+	"fmt"
+)
+func main(){
+// declaring a slice of slices of
+    // type integer with a length of 3
+   
+    preslice :=make([]int,0)
+    for i:=1;i<=5;i++{
+        slice :=make([]int,i)
+        for j:=0;j<i;j++{
+            if j==0 || j==i-1{
+                slice[j]=1
+            }else
+            {
+                slice[j]=preslice[j]+preslice[j-1]
+            }
 
-import "fmt"
+        }
+        preslice=slice
+        fmt.Println(slice)
+    }
 
-type Tank interface {
-	Tarea() float64
-	Volume() float64
-}
-type myvalue struct {
-	radius float64
-	height float64
-}
-
-func (m myvalue) Tarea() float64 {
-	return 2*m.radius*m.height +
-		2*3.14*m.radius*m.radius
-}
-func (m myvalue) Volume() float64 {
-	return 3.14 * m.radius * m.radius * m.height
-}
-func main() {
-	var t Tank
-	t = myvalue{10, 14}
-	fmt.Println("The are of Tank", t.Tarea())
-	fmt.Println("The volume of the Tank is", t.Volume())
 }
